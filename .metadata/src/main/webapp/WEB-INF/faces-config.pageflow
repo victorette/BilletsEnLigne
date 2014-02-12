@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13787747442080" configfile="/BilletsEnLigne/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="creationCompte.xhtml" x="122" y="178" id="pf13790099440330" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" path="/creationCompte.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="122" y="562" id="pf13790099440342" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin/adminHome.xhtml" x="122" y="946" id="pf13790099440345" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="/admin/adminHome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="2098" id="pf13791907706904" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf13799790069860" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="gestionBillets.xhtml" x="122" y="1330" id="pf13791907706905" referenceLink="//@navigationRule.3/@navigationCase.1/@toViewId|" path="/gestionBillets.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="creationBillet.xhtml" x="122" y="1714" id="pf13791911840258" referenceLink="//@navigationRule.3/@fromViewId|" path="/creationBillet.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="affichageBillets.xhtml" x="122" y="2866" id="pf137919411886311" referenceLink="//@navigationRule.3/@navigationCase.1/@toViewId|" path="/affichageBillets.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="338" y="2482" id="pf13792664868462" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf13799790069862 pf13799790069866 pf13804725115370 pf13804725190482" inlinks="pf13799790069862 pf13799790069860 pf13799790069867 pf13799790069868" path="/unsecured-pages/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="modificationCompte.xhtml" x="338" y="2098" id="pf137926648684612" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf137997900698610" inlinks="pf137997900698610" path="/secured-pages/inscrits-admin/modificationCompte.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/admin/accueil.html" x="122" y="3250" id="pf137926648684618" referenceLink="//@navigationRule.5/@navigationCase.1/@toViewId|" path="/pages/admin/accueil.html"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/inscrits-et-admin/accueil.xhtml" x="122" y="3634" id="pf137926648684619" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" path="/pages/inscrits-et-admin/accueil.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="creationCompte.xhtml" x="122" y="2482" id="pf137997900698716" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf13799790069867 pf13799790069868 pf137997900698717" inlinks="pf13799790069866 pf137997900698717" path="/unsecured-pages/creationCompte.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="secured-pages/accueil.xhtml" id="pf13804725115371" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf13804725115370 pf13804725190482 pf13804725522764 pf13804725522765 pf13804725522766" path="/secured-pages/accueil.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="creationBillet.xhtml" id="pf13804725522767" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf13804725522764" path="/secured-pages/admin/creationBillet.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="creationMatch.xhtml" id="pf13804725522768" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf13804725522765" path="/secured-pages/admin/creationMatch.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="creationCentreSportif.xhtml" id="pf13804725522769" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf13804725522766" path="/secured-pages/admin/creationCentreSportif.xhtml"/>
+  <links id="pf13799790069860" target="pf13792664868462" source="pf13791907706904" outcome="logout-reussi" redirect="true"/>
+  <links id="pf13799790069866" target="pf137997900698716" source="pf13792664868462" outcome="goto-creation-compte" redirect="true"/>
+  <links id="pf13799790069867" target="pf13792664868462" source="pf137997900698716" outcome="creation-compte-reussie" redirect="true"/>
+  <links id="pf13799790069868" target="pf13792664868462" source="pf137997900698716" outcome="creation-compte-annulee" redirect="true"/>
+  <links id="pf13799790069862" target="pf13792664868462" source="pf13792664868462" outcome="login-echoue" redirect="true">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf137997900698717" target="pf137997900698716" source="pf137997900698716" outcome="creation-compte-echouee" redirect="true">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf137997900698610" target="pf137926648684612" source="pf137926648684612" outcome="modification-compte-reussie" redirect="true">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf13804725115370" target="pf13804725115371" source="pf13792664868462" outcome="login-reussi" redirect="true"/>
+  <links id="pf13804725190482" target="pf13804725115371" source="pf13792664868462" outcome="login-anonyme-reussi" redirect="true"/>
+  <links id="pf13804725522764" target="pf13804725115371" source="pf13804725522767" outcome="creation-billet-annulee" redirect="true"/>
+  <links id="pf13804725522765" target="pf13804725115371" source="pf13804725522768" outcome="creation-match-annulee" redirect="true"/>
+  <links id="pf13804725522766" target="pf13804725115371" source="pf13804725522769" outcome="creation-nomCentreSportif-annulee" redirect="true"/>
+</pageflow:Pageflow>

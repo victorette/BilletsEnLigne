@@ -1,0 +1,119 @@
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h2>Inventaire de tous les billets de saison</h2>
+        <h:form id="myform">
+            <p:growl id="growlMsgs" showDetail="true" sticky="false"/>
+            <ui:param name="inventaireTable" value="#{inventaireSaisonBean.inventaireTable}"/>
+            <ui:param name="filtreOptions" value="#{inventaireSaisonBean.filtreOptions}"/>
+
+            <p:dataTable id="dtoTable" var="dto" value="#{inventaireTable.inventaireDataModel}"
+                         widgetVar="DTOsFilter"
+                         paginator="true" rows="20"
+                         selection="#{inventaireTable.entreeChoisie}" selectionMode="single"
+                         sortMode="multiple"
+                         emptyMessage="Aucun item trouvé avec ces critères" filteredValue="#{inventaireTable.filteredDTOs}">
+
+                <p:ajax event="rowSelect" listener="#{inventaireTable.onRowSelect}" update=":myform:sommaire_et_atchat_billet"/>
+                <p:ajax event="rowUnselect" listener="#{inventaireTable.onRowUnselect}" update=":myform:sommaire_et_atchat_billet"/>
+
+
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Chercher tous les champs:"/>
+                        <p:inputText id="globalFilter" onkeyup="DTOsFilter.filter()" style="width:150px"/>
+                        <p:commandButton value="Afficher tous" id="btnClearFilters" onclick="DTOsFilter.clearFilters()"/>
+                    </p:outputPanel>
+                </f:facet>
+
+                <p:column headerText="CentreSportif" sortBy="#{dto.nomCentreSportif}"
+                          filterBy="#{dto.nomCentreSportif}" filterMatchMode="contains">
+                    <h:outputText value="#{dto.nomCentreSportif}"/>
+                </p:column>
+                <p:column headerText="Ville" sortBy="#{dto.ville}"
+                          filterBy="#{dto.ville}" filterMatchMode="contains">
+                    <h:outputText value="#{dto.ville}"/>
+                </p:column>
+                <p:column headerText="Saison" sortBy="#{dto.annee}"
+                          filterBy="#{dto.annee}" filterMatchMode="contains">
+                    <h:outputText value="#{dto.annee}"/>
+                </p:column>
+                <p:column headerText="Section" sortBy="#{dto.nomSection}"
+                          filterBy="#{dto.nomSection}" filterMatchMode="contains">
+                    <h:outputText value="#{dto.nomSection}"/>
+                </p:column>
+                <p:column headerText="Cat-Siege" sortBy="#{dto.categorieSiege}"
+                          filterBy="#{dto.categorieSiege}" filterMatchMode="contains"
+                          filterOptions="#{filtreOptions.categorieSiegeOptions}">
+                    <h:outputText value="#{dto.categorieSiege}"/>
+                </p:column>
+                <p:column headerText="Prix" sortBy="#{dto.prix}"
+                          filterBy="#{dto.prix}" filterMatchMode="contains">
+                    <h:outputText value="#{dto.prix}">
+                        <f:convertNumber currencySymbol="$" type="currency"/>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Nombre" sortBy="#{dto.nombreBilletsDisponibles}">
+                    <h:outputText value="#{dto.nombreBilletsDisponibles}"/>
+                </p:column>
+            </p:dataTable>
+
+            <br/>
+            <br/>
+
+            <p:panel id="sommaire_et_atchat_billet">
+                <ui:param name="dto" value="#{inventaireTable.entreeChoisie}"/>
+
+                <p:panelGrid columns="2" rendered="#{not empty dto}">
+                    <f:facet name="header">
+                        Informations du billet selectioné
+                    </f:facet>
+                    <h:outputText value="CentreSportif:"/>
+                    <h:outputText value="#{dto.nomCentreSportif}"/>
+                    <h:outputText value="Saison:"/>
+                    <h:outputText value="#{dto.annee}"/>
+                    <h:outputText value="Type d'admission:"/>
+                    <h:outputText value="#{dto.categorieSiege}"/>
+                    <h:outputText value="Section:"/>
+                    <h:outputText value="#{dto.nomSection}"/>
+                    <h:outputText value="Prix:"/>
+                    <h:outputText value="#{dto.prix}">
+                        <f:convertNumber currencySymbol="$" type="currency"/>
+                    </h:outputText>
+                    <f:facet name="footer">
+                        Achetez rapidement, plus que #{dto.nombreBilletsDisponibles} restant!
+                    </f:facet>
+                </p:panelGrid>
+
+				<p:panel id="imageSection" rendered="#{inventaireSaisonBean.doitAfficherImageStade()}">
+					<h:graphicImage library="stade-photos" name="#{inventaireSaisonBean.imageSection}" alt="Image du stade non trouvée" 
+									width="380" height="290"/>                  
+                </p:panel>
+	
+                <br/>
+
+                <p:panel id="achatBillet" rendered="#{inventaireSaisonBean.doitAfficherAchatBillet()}">
+                    <h:outputText value="Quantité :" style="width:20px;"/>
+                    <p:inputText id="quantiteBillets" value="#{dto.nombreBilletsDesires}" required="true"
+                                 requiredMessage="Veuillez entrer une quantité !">
+                        <f:validateDoubleRange minimum="1"/>
+                    </p:inputText>
+                    <p:commandButton value="Ajouter au panier" id="btnAjouterPanier"
+                                     action="#{inventaireSaisonBean.ajouterBilletAuPanier()}" update=":myform, :myform:growlMsgs"/>
+                    <p:commandButton value="Achat instantané" id="btnAchatInstantané"
+                                     action="#{inventaireSaisonBean.acheterInstantanement()}" update=":myform, :myform:growlMsgs">
+                    </p:commandButton>
+                </p:panel>
+            </p:panel>
+
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>

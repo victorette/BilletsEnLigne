@@ -1,0 +1,54 @@
+<ui:composition
+        template="/templates/layout.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:form styleClass="comptePanelStyle" id="formCreateMatch">
+            <ui:param name="match" value="#{creationMatchBean.match}"/>
+
+            <p:growl id="growlMsgs" showDetail="true" sticky="false"/>
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    #{msgs.lbTitreCreationMatch}
+                </f:facet>
+                <h:outputText value="#{msgs.lbCentreSportif}"/>
+                <p:selectOneMenu value="#{match.nomCentreSportif}" required="true" requiredMessage="#{msgs.msgCentreSportifVide}">
+                    <f:selectItems value="#{creationMatchBean.listeNomsCentresSportifs}"/>
+                </p:selectOneMenu>
+                <h:outputText value="#{msgs.lbSportType}"/>
+                <p:selectOneMenu value="#{match.sportType}" required="true" requiredMessage="#{msgs.msgTypeSportVide}">
+                    <f:selectItem itemLabel="rugby" itemValue="rugby"/>
+                    <f:selectItem itemLabel="football" itemValue="football"/>
+                    <f:selectItem itemLabel="basketball" itemValue="basketball"/>
+                    <f:selectItem itemLabel="soccer" itemValue="soccer"/>
+                    <f:selectItem itemLabel="volleyball" itemValue="volleyball"/>
+                </p:selectOneMenu>
+                <h:outputText value="#{msgs.lbSportSexe}"/>
+                <p:selectOneButton value="#{match.sportSexe}" required="true" requiredMessage="#{msgs.msgSportSexeVide}">
+                    <f:selectItem itemLabel="Masculin" itemValue="masculin"/>
+                    <f:selectItem itemLabel="Féminin" itemValue="feminin"/>
+                </p:selectOneButton>
+                <h:outputText value="#{msgs.lbEquipeMaison}"/>
+                <p:inputText id="equipe_maison" value="#{match.equipeMaison}" required="true" requiredMessage="#{msgs.msgEquipeMaisonVide}">
+                    <f:validateLength minimum="1"/>
+                </p:inputText>
+                <h:outputText value="#{msgs.lbEquipeVisiteur}"/>
+                <p:inputText id="equipe_visiteur" value="#{match.equipeVisiteur}" required="true" requiredMessage="#{msgs.msgEquipeVisiteurVide}">
+                    <f:validateLength minimum="1"/>
+                </p:inputText>
+                <h:outputText value="#{msgs.lbDate} (yyyy-MM-dd HH:mm)"/>
+                <p:calendar value="#{match.date}" id="date" pattern="yyyy-MM-dd HH:mm"/>
+                <f:facet name="footer">
+                    <p:commandButton value="#{msgs.btAnnuler}" action="#{creationMatchBean.annulerCreationMatchClicked}" immediate="true" icon="ui-icon-close"
+                                     style="margin:1"/>
+                    <p:commandButton value="#{msgs.btConfirmer}" update="growlMsgs,formCreateMatch" action="#{creationMatchBean.creerMatchClicked}"
+                                     icon="ui-icon-check" style="margin:1"/>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

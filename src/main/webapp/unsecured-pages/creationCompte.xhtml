@@ -1,0 +1,140 @@
+<ui:composition
+        template="/templates/layout.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:form styleClass="comptePanelStyle">
+            <ui:param name="utilisateurActif" value="#{creationCompteBean.utilisateurActif}"/>
+			
+            <p:growl id="growlMsgs" showDetail="true" sticky="false"/>
+            <p:panelGrid>
+                <f:facet name="header">
+                	<p:row>
+	                    <p:column colspan="2"> #{msgs.lbTitreCreationCompte}</p:column>
+    				</p:row>
+                </f:facet>
+                <p:row>
+                	<p:column>
+	                	<h:outputText value="NomUtilisateur:"/>
+	                </p:column>
+	                <p:column>
+		                <p:inputText id="nomUtilisateur" value="#{utilisateurActif.nomUtilisateur}" required="true" requiredMessage="#{msgs.msgIdUtilisateurVide}"
+		                             message="fc">
+		                    <f:validateLength minimum="1"/>
+		                </p:inputText>
+		            </p:column>    
+	            </p:row>    
+                <p:row>
+                	<p:column>
+		                <h:outputText value="#{msgs.lbMotDePasse}"/>
+		            </p:column>    
+		            <p:column>
+		                <p:inputText id="motDePasse" value="#{utilisateurActif.motDePasse}" required="true" requiredMessage="#{msgs.msgMotDePasseVide}">
+		                    <f:validateLength minimum="1"/>
+		                </p:inputText>
+                	</p:column>
+                </p:row>
+                <p:row>
+                	<p:column>
+		                <h:outputText value="#{msgs.lbNomUtilisateur}"/>
+		            </p:column>   
+		            <p:column> 
+		            	<p:inputText id="nom" value="#{utilisateurActif.nom}" required="true" requiredMessage="#{msgs.msgNomUtilisateurVide}">
+		                    <f:validateLength minimum="1"/>
+		                </p:inputText>
+		            </p:column>    
+                </p:row>
+                <p:row>
+                	<p:column>
+		                <h:outputText value="#{msgs.lbPrenomUtilisateur}"/>
+	    			</p:column>
+		            <p:column>    
+		            	<p:inputText id="prenom" value="#{utilisateurActif.prenom}" required="true" requiredMessage="#{msgs.msgPrenomUtilisateurVide}">
+		                    <f:validateLength minimum="1"/>
+		                </p:inputText>
+					</p:column>
+                </p:row>
+                <p:row>
+	                <p:column>
+		                <h:outputText value="#{msgs.lbCourriel}"/>
+					</p:column>
+		            <p:column>
+		                <p:inputText id="courriel" value="#{utilisateurActif.courriel}" required="true" requiredMessage="#{msgs.msgCourrielVide}">
+		                    <f:validateLength minimum="1"/>
+		                </p:inputText>
+					</p:column>
+                </p:row>
+				
+				
+             	<p:row>
+                    <p:column colspan="2" styleClass="ui-widget-header" style="text-align:center;">Infos bancaires</p:column>
+                </p:row>
+          
+                
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Type carte de crédit:"/>
+                    </p:column>
+                    <p:column>
+                        <p:selectOneMenu value="#{creationCompteBean.infosBancaires.typeCarte}" required="true" requiredMessage="Veuillez entrer un type de carte de crédit!">
+                            <f:selectItem itemLabel="Vasi" itemValue="vasi"/>
+	                        <f:selectItem itemLabel="Mistercard" itemValue="mistercard"/>
+	                        <f:selectItem itemLabel="American Espresso" itemValue="american-espresso"/>
+	                    </p:selectOneMenu>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Numéro de carte de crédit:"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputMask id="equipe_visiteur" value="#{creationCompteBean.infosBancaires.numeroCarte}" mask="9999 9999 9999 9999" required="true"
+                                 requiredMessage="Veuillez entrer un numéro de carte.">
+	                        <f:validateLength minimum="19"/>
+	                    </p:inputMask>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Mois expiration :  "/>
+                    </p:column>
+                    <p:column>
+                        <p:inputMask value="#{creationCompteBean.infosBancaires.moisExpiration}" size="6" required="true" requiredMessage="Veuilez entrer un mois d'expiration."
+                                 mask="99">
+                        <f:validateLength minimum="2"/>
+                    	</p:inputMask>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Annee expiration :"/>
+                    </p:column>
+                    <p:column>
+                         <p:inputMask value="#{creationCompteBean.infosBancaires.anneeExpiration}" required="true" requiredMessage="Veuilez entrer une annee d'expiration."
+                                 mask="9999" size="6">
+	                        <f:validateLength minimum="4"/>
+	                    </p:inputMask>
+                    </p:column>
+                </p:row>
+				
+                
+                <f:facet name="footer">
+                	<p:row>
+                		<p:column>
+		                    <p:commandButton value="#{msgs.btAnnuler}" action="#{creationCompteBean.annulerCreationCompteClicked}" immediate="true" icon="ui-icon-close"
+		                                     style="margin:1"/>
+		                </p:column>  
+		                <p:column>
+		                    <p:commandButton value="#{msgs.btConfirmer}" update="growlMsgs" action="#{creationCompteBean.creerUtilisateurClicked}" icon="ui-icon-check"
+		                                     style="margin:1"/>
+						</p:column>
+					</p:row>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

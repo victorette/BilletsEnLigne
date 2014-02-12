@@ -1,0 +1,30 @@
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h2>#{msgs.lbTitreListeMatchs}</h2>
+        <h:form id="myform">
+            <ui:repeat var="match" value="#{tousMatchsBean.listeMatchs}">
+                <p:growl id="growlMsgs" showDetail="true" sticky="true"/>
+                <p:panelGrid columns="2" style="width: 500px;">
+                    <ul>
+                        <li>#{msgs.lbMatchId} #{match.matchId}</li>
+                        <li>#{msgs.lbCentreSportif} #{match.nomCentreSportif}</li>
+                        <li>#{msgs.lbSportType} #{match.sportType}</li>
+                        <li>#{msgs.lbSportSexe} #{match.sportSexe}</li>
+                        <li>#{msgs.lbEquipeMaison} #{match.equipeMaison}</li>
+                        <li>#{msgs.lbEquipeVisiteur} #{match.equipeVisiteur}</li>
+                        <li>#{msgs.lbDate} #{match.date}</li>
+                    </ul>
+                    <p:commandButton value="#{msgs.btEffacer}" action="#{suppressionMatchBean.supprimerMatch(match.matchId)}" update=":myform, growlMsgs"
+                                     icon="ui-icon-close" style="margin:1"
+                                     rendered="#{utilisateurSessionBean.utilisateurActifPeutEffacerMatch()}"/>
+                </p:panelGrid>
+            </ui:repeat>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

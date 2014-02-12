@@ -1,0 +1,53 @@
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h2>#{msgs.lbTitreListeCentresSportifs}</h2>
+        <h:form id="myform">
+            <ui:repeat var="nomCentreSportif" value="#{tousCentresSportifsBean.listeCentresSportifs}">
+                <p:growl id="growlMsgs" showDetail="true" sticky="true"/>
+                <p:panelGrid style="width: 500px;margin-bottom:25px;">
+                    <f:facet name="header">
+                        <p:row>
+                            <p:column colspan="3">#{msgs.lbNom} #{nomCentreSportif.nom}</p:column>
+                        </p:row>
+                    </f:facet>
+                    <p:row>
+                        <p:column>#{msgs.lbVille}</p:column>
+                        <p:column>#{nomCentreSportif.ville}</p:column>
+                        <p:column rowspan="3">
+                            <p:commandButton value="#{msgs.btEffacer}" action="#{suppressionCentreSportifBean.supprimerCentreSportif(nomCentreSportif.nom)}"
+                                             update=":myform, growlMsgs" icon="ui-icon-close" style="margin:1"
+                                             rendered="#{utilisateurSessionBean.utilisateurActifPeutEffacerCentreSportif()}"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>#{msgs.lbTerrains}</p:column>
+                        <p:column>
+                            <ul>
+                                <ui:repeat var="terrain" value="#{nomCentreSportif.terrains}">
+                                    <li>#{terrain}</li>
+                                </ui:repeat>
+                            </ul>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>#{msgs.lbSections}</p:column>
+                        <p:column>
+                            <ul>
+                                <ui:repeat var="section" value="#{nomCentreSportif.sections}">
+                                    <li>#{section}</li>
+                                </ui:repeat>
+                            </ul>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+            </ui:repeat>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

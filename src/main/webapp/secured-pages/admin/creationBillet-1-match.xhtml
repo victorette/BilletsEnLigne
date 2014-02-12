@@ -1,0 +1,68 @@
+<ui:composition template="/templates/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:form styleClass="comptePanelStyle" id="myform">
+            <ui:param name="billet" value="#{creationBilletUnMatchBean.billet}"/>
+
+            <p:growl id="growlMsgs" showDetail="true" sticky="false"/>
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    #{msgs.lbTitreCreationBillet}
+                </f:facet>
+                <h:outputText value="#{msgs.lbMatchId}"/>
+                <p:selectOneMenu value="#{billet.match_id}" required="true" requiredMessage="#{msgs.msgMatchIdVide}">
+                    <p:ajax update="sections"/>
+                    <f:selectItem itemLabel="Choisir ID" itemValue=""/>
+                    <f:selectItems value="#{creationBilletUnMatchBean.listeMatchsIds}"/>
+                </p:selectOneMenu>
+                <h:outputText value="#{msgs.lbCategorieSiege}"/>
+                <p:selectOneButton value="#{billet.categorie_siege}" required="true" requiredMessage="#{msgs.msgCategorieSiegeVide}">
+                    <p:ajax update="togglable1, togglable2"/>
+                    <f:selectItem itemLabel="Réservé" itemValue="reserve"/>
+                    <f:selectItem itemLabel="Général" itemValue="general"/>
+                </p:selectOneButton>
+
+                <h:outputText value="#{msgs.lbPrix}"/>
+                <p:inputText id="prix" value="#{billet.prix}" converterMessage="#{msgs.msgFormatPrix}">
+                    <f:validateDoubleRange minimum="0.00"/>
+                </p:inputText>
+
+                <h:panelGroup id="togglable1" layout="block">
+                    <h:panelGroup id="section_togglable" rendered="#{billet.categorie_siege == 'reserve'}">
+                        <h:outputText value="#{msgs.lbSection}"/>
+                        <p:selectOneMenu id="sections" value="#{billet.nomSection}" required="true" requiredMessage="#{msgs.msgSectionVide}">
+                            <f:selectItem itemLabel="Choisir section" itemValue=""/>
+                            <f:selectItems value="#{creationBilletUnMatchBean.listeNomsSections}"/>
+                        </p:selectOneMenu>
+                    </h:panelGroup>
+                </h:panelGroup>
+
+                <h:panelGroup id="togglable2" layout="block">
+                    <h:panelGroup id="quantite_togglable" rendered="#{billet.categorie_siege == 'general'}">
+                        <h:outputText value="Quantité de billets:"/>
+                        <p:inputText value="#{creationBilletUnMatchBean.nombreBillets}" required="true"
+                                     requiredMessage="Veuillez entrer une quantité de billets à créer.">
+                            <f:validateLength minimum="1"/>
+                        </p:inputText>
+                    </h:panelGroup>
+
+                    <h:panelGroup id="siege_togglable" rendered="#{billet.categorie_siege == 'reserve'}">
+                        <h:outputText value="Siège:"/>
+                        <p:inputText value="#{billet.nomSiege}" required="true" requiredMessage="Veuillez entrer un siège!">
+                            <f:validateLength minimum="1"/>
+                        </p:inputText>
+                    </h:panelGroup>
+                </h:panelGroup>
+
+                <f:facet name="footer">
+                    <p:commandButton value="#{msgs.btAnnuler}" action="#{creationBilletUnMatchBean.annulerCreationBilletClicked}"
+                                     immediate="true" icon="ui-icon-close" style="margin:1"/>
+                    <p:commandButton value="#{msgs.btConfirmer}" update="growlMsgs, myform"
+                                     action="#{creationBilletUnMatchBean.creerBilletClicked}" icon="ui-icon-check" style="margin:1"/>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

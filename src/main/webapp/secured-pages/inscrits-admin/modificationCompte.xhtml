@@ -1,0 +1,183 @@
+<ui:composition
+        template="/templates/layout.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <ui:param name="utilisateurActif" value="#{modificationCompteBean.utilisateurActif}"/>
+
+        <h:form styleClass="comptePanelStyle">
+            <p:growl id="growlMsgs" showDetail="true" sticky="false"/>
+            <p:panelGrid id="utilisateurInfos">
+                <f:facet name="header">
+                    <p:row>
+                        <p:column colspan="2">#{msgs.lbTitreModificationCompte}</p:column>
+                    </p:row>
+                </f:facet>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="NomUtilisateur:"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{utilisateurActif.nomUtilisateur}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="#{msgs.lbMotDePasse}"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="motDePasse" value="#{utilisateurActif.motDePasse}" required="true" requiredMessage="#{msgs.msgMotDePasseVide}">
+                            <f:validateLength minimum="1"/>
+                        </p:inputText>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="#{msgs.lbNomUtilisateur}"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="nom" value="#{utilisateurActif.nom}" required="true" requiredMessage="#{msgs.msgNomUtilisateurVide}">
+                            <f:validateLength minimum="1"/>
+                        </p:inputText>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="#{msgs.lbPrenomUtilisateur}"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="prenom" value="#{utilisateurActif.prenom}" required="true" requiredMessage="#{msgs.msgPrenomUtilisateurVide}">
+                            <f:validateLength minimum="1"/>
+                        </p:inputText>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="#{msgs.lbCourriel}"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="courriel" value="#{utilisateurActif.courriel}" required="true" requiredMessage="#{msgs.msgCourrielVide}">
+                            <f:validateLength minimum="1"/>
+                        </p:inputText>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column colspan="2" styleClass="ui-widget-header" style="text-align:center;">Préférences billet</p:column>
+                </p:row>
+
+                <ui:param name="preferences" value="#{modificationCompteBean.preferences}"/>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Sport(s):"/>
+                    </p:column>
+                    <p:column>
+                        <p:selectManyButton value="#{preferences.sportsTypes}" required="true" requiredMessage="Veuillez choisir au moins un sport !">
+                            <f:selectItem itemLabel="rugby" itemValue="rugby"/>
+                            <f:selectItem itemLabel="football" itemValue="football"/>
+                            <f:selectItem itemLabel="basketball" itemValue="basketball"/>
+                            <f:selectItem itemLabel="soccer" itemValue="soccer"/>
+                            <f:selectItem itemLabel="volleyball" itemValue="volleyball"/>
+                        </p:selectManyButton>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Nombre de jours:"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText value="#{preferences.nombreJours}" required="true" requiredMessage="Veuillez entrer un nombre de jours!">
+                            <f:validateDoubleRange minimum="0"/>
+                        </p:inputText>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Local seulement?:"/>
+                    </p:column>
+                    <p:column>
+                        <p:selectBooleanCheckbox value="#{preferences.localSeulement}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Cat-siège:"/>
+                    </p:column>
+                    <p:column>
+                        <p:selectOneMenu value="#{preferences.categorieSiege}" required="true" requiredMessage="Veuillez entrer une catégorie de siège!">
+                            <f:selectItem itemLabel="Tous" itemValue="tous"/>
+                            <f:selectItem itemLabel="Réservé" itemValue="reserve"/>
+                            <f:selectItem itemLabel="Général" itemValue="general"/>
+                        </p:selectOneMenu>
+                    </p:column>
+                </p:row>
+            
+             	<p:row>
+                    <p:column colspan="2" styleClass="ui-widget-header" style="text-align:center;">Infos bancaires</p:column>
+                </p:row>
+
+                <ui:param name="infosBancaires" value="#{modificationCompteBean.infosBancaires}"/>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Type carte de crédit:"/>
+                    </p:column>
+                    <p:column>
+                        <p:selectOneMenu value="#{infosBancaires.typeCarte}" required="true" requiredMessage="Veuillez entrer un type de carte de crédit!">
+                            <f:selectItem itemLabel="Vasi" itemValue="vasi"/>
+	                        <f:selectItem itemLabel="Mistercard" itemValue="mistercard"/>
+	                        <f:selectItem itemLabel="American Espresso" itemValue="american-espresso"/>
+	                    </p:selectOneMenu>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Numéro de carte de crédit:"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputMask id="equipe_visiteur" value="#{infosBancaires.numeroCarte}" mask="9999 9999 9999 9999" required="true"
+                                 requiredMessage="Veuillez entrer un numéro de carte.">
+	                        <f:validateLength minimum="19"/>
+	                    </p:inputMask>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Mois expiration :  "/>
+                    </p:column>
+                    <p:column>
+                        <p:inputMask value="#{infosBancaires.moisExpiration}" size="6" required="true" requiredMessage="Veuilez entrer un mois d'expiration."
+                                 mask="99">
+                        <f:validateLength minimum="2"/>
+                    </p:inputMask>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="Annee expiration :"/>
+                    </p:column>
+                    <p:column>
+                         <p:inputMask value="#{infosBancaires.anneeExpiration}" required="true" requiredMessage="Veuilez entrer une annee d'expiration."
+                                 mask="9999" size="6">
+	                        <f:validateLength minimum="4"/>
+	                    </p:inputMask>
+                    </p:column>
+                </p:row>
+
+                <f:facet name="footer">
+                    <p:row>
+                        <p:column colspan="2">
+                            <p:commandButton value="#{msgs.btConfirmer}" update="growlMsgs" action="#{modificationCompteBean.confirmerModificationClicked}"
+                                             icon="ui-icon-check" style="margin:1"/>
+                        </p:column>
+                    </p:row>
+                </f:facet>
+            </p:panelGrid>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

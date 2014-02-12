@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="false">  
+  <class id="1" language="java" name="ca.ulaval.ift6003.domaine.modele.exceptions.QuantiteInsuffisante" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/exceptions/QuantiteInsuffisante.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="587" y="308"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="ca.ulaval.ift6003.domaine.modele.exceptions.EntiteNonTrouvee" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/exceptions/EntiteNonTrouvee.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="589" y="167"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="ca.ulaval.ift6003.domaine.modele.exceptions.IdentifiantDejaExistant" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/exceptions/IdentifiantDejaExistant.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="586" y="234"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="ca.ulaval.ift6003.domaine.modele.exceptions.DroitsInsuffisants" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/exceptions/DroitsInsuffisants.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="588" y="90"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="ca.ulaval.ift6003.application.frontiere.exceptionsUI.UIDroitsInsuffisants" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/frontiere/exceptionsUI/UIDroitsInsuffisants.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="315" y="91"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="ca.ulaval.ift6003.application.frontiere.exceptionsUI.UIEntiteInexistante" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/frontiere/exceptionsUI/UIEntiteInexistante.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="317" y="164"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="ca.ulaval.ift6003.application.frontiere.exceptionsUI.UIIdentifiantDejaExistant" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/frontiere/exceptionsUI/UIIdentifiantDejaExistant.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="321" y="235"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="ca.ulaval.ift6003.application.frontiere.exceptionsUI.UIQuantiteInsuffisante" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/frontiere/exceptionsUI/UIQuantiteInsuffisante.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="319" y="306"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="ca.ulaval.ift6003.application.frontiere.dtos.EntreeUnMatchDTO" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/frontiere/dtos/EntreeUnMatchDTO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="303" y="466"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="ca.ulaval.ift6003.application.frontiere.dtos.EntreeSaisonDTO" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/frontiere/dtos/EntreeSaisonDTO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="304" y="385"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="ca.ulaval.ift6003.application.frontiere.dtos.EntreeDTO" project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/frontiere/dtos/EntreeDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="95" y="414"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="ca.ulaval.ift6003.application.frontiere.constantesEtEnumsUI.UIPermissions" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/frontiere/constantesEtEnumsUI/UIPermissions.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="294" y="28"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="ca.ulaval.ift6003.domaine.modele.ConstantesEtEnums.Permissions" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/ConstantesEtEnums/Permissions.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="609" y="28"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.entrees.EntreeUnMatch" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/entrees/EntreeUnMatch.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="602" y="465"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.entrees.EntreeSaison" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/entrees/EntreeSaison.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="600" y="384"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.entrees.Entree" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/entrees/Entree.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="867" y="432"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <generalization id="17">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <generalization id="20">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false" static="false"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="false" multiplicity="false"/>
+</class-diagram>

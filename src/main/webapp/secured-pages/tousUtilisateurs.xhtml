@@ -1,0 +1,19 @@
+<ui:composition template="/templates/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h2>#{msgs.lbTitreListeUtilisateurs}</h2>
+        <ui:repeat var="utilisateurActif" value="#{tousUtilisateursBean.listeUtilisateurs}">
+            <p:panelGrid columns="1" style="width: 500px;">
+                <ul>
+                    <li>#{msgs.lbNomUtilisateur} #{utilisateurActif.nomUtilisateur}</li>
+                    <li>#{msgs.lbMotDePasse} #{utilisateurActif.motDePasse}</li>
+                    <li>#{msgs.lbNom} #{utilisateurActif.nom}</li>
+                    <li>#{msgs.lbPrenomUtilisateur} #{utilisateurActif.prenom}</li>
+                    <li>#{msgs.lbCourriel} #{utilisateurActif.courriel}</li>
+                </ul>
+            </p:panelGrid>
+        </ui:repeat>
+    </ui:define>
+
+</ui:composition>

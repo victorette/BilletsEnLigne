@@ -1,0 +1,17 @@
+<ui:composition template="/templates/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="content">
+        	<h1>La transaction a bien été effectuée! </h1>
+        	<br />
+        	<br />
+        	<h1>Numéro de transaction  : #{transactionAccepteeBean.numeroTransaction}</h1>
+        	<br />
+        	<h1>Date de la transaction : #{transactionAccepteeBean.dateTransaction}</h1>
+        	<br />
+        	<br />
+        	<h1>Un courriel vient de vous être envoyé !</h1>
+  
+    </ui:define>
+
+</ui:composition>

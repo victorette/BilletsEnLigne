@@ -1,0 +1,81 @@
+<ui:composition template="/templates/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+
+        <h:body>
+            <h2>Paiement</h2>
+            <h:form id="myform">
+                <p:growl id="growlMsgs" showDetail="true" sticky="false"/>
+
+				<ui:param name="infosBancaires" value="#{paiementPanierBean.infosBancaires}"></ui:param>
+
+                <p:panel>
+                    <h:outputText value="Carte de crédit : "/>
+                    <p:selectOneMenu value="#{infosBancaires.typeCarte}" required="true"
+                                     requiredMessage="Veuillez choisir un type de carte de crédit.">
+                        <f:selectItem itemLabel="Vasi" itemValue="vasi"/>
+                        <f:selectItem itemLabel="Mistercard" itemValue="mistercard"/>
+                        <f:selectItem itemLabel="American Espresso" itemValue="american-espresso"/>
+                    </p:selectOneMenu>
+
+                    <br/>
+                    <br/>
+
+                    <h:outputText value="Numéro de carte de crédit:"/>
+                    <p:inputMask id="equipe_visiteur" value="#{infosBancaires.numeroCarte}" mask="9999 9999 9999 9999" required="true"
+                                 requiredMessage="Veuillez entrer un numéro de carte.">
+                        <f:validateLength minimum="19"/>
+                    </p:inputMask>
+
+                    <br/>
+                    <br/>
+
+                    <h:outputText value="Mois expiration :  "/>
+                    <p:inputMask value="#{infosBancaires.moisExpiration}" size="6" required="true" requiredMessage="Veuilez entrer un mois d'expiration."
+                                 mask="99">
+                        <f:validateLength minimum="2"/>
+                    </p:inputMask>
+                    <br/>
+                    <br/>
+                    <h:outputText value="Annee expiration :"/>
+                    <p:inputMask value="#{infosBancaires.anneeExpiration}" required="true" requiredMessage="Veuilez entrer une annee d'expiration."
+                                 mask="9999" size="6">
+                        <f:validateLength minimum="4"/>
+                    </p:inputMask>
+
+                    <br/>
+                    <br/>
+
+                </p:panel>
+
+                <br/>
+
+                <p:panel>
+                    <h:outputText value="Nombre d'articles à acheter :"/>
+                    <h:outputText value="#{paiementPanierBean.nombreArticles}"/>
+                    <br/>
+                    <h:outputText value="Montant total du panier:"/>
+                    <h:outputText value="#{paiementPanierBean.prixTotal}">
+                        <f:convertNumber currencySymbol="$" type="currency"/>
+                    </h:outputText>
+                    <br/>
+                    <br/>
+
+                    <p:commandButton value="Retour au panier" action="/secured-pages/inscrits-admin/mon-panier.xhtml?faces-redirect=true"
+                                     update=":myform, :myform:growlMsgs" icon="ui-icon-circle-close" immediate="true"
+                                     style="margin:1"/>
+                    <p:commandButton value="Confirmer paiement" action="#{paiementPanierBean.confirmerPaiement()}" update=":myform, :myform:growlMsgs"
+                                     icon="ui-icon-check"
+                                     style="margin:1"/>
+
+                </p:panel>
+
+            </h:form>
+
+        </h:body>
+
+    </ui:define>
+
+</ui:composition>

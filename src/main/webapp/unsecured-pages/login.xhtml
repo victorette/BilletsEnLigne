@@ -1,0 +1,36 @@
+<ui:composition
+        template="/templates/layout.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:form styleClass="loginPanelStyle">
+            <p:growl id="growlMsgs" showDetail="true" sticky="false" autoUpdate="true"/>
+            <p:panelGrid id="panelgrid" columns="2">
+                <f:facet name="header">
+                    #{msgs.lbLogin}
+                </f:facet>
+                <h:outputText value="Nom utilisateur:"/>
+                <p:inputText id="nomUtilisateur" value="#{utilisateurSessionBean.nomUtilisateur}" required="true" requiredMessage="#{msgs.msgIdUtilisateurVide}"
+                             message="fc">
+                    <f:validateLength minimum="1"/>
+                </p:inputText>
+                <h:outputText value="#{msgs.lbMotDePasse}"/>
+                <p:password id="motDePasse" value="#{utilisateurSessionBean.motDePasse}" required="true" requiredMessage="#{msgs.msgMotDePasseVide}">
+                    <f:validateLength minimum="1"/>
+                </p:password>
+                <f:facet name="footer">
+                    <p:commandButton value="#{msgs.btLogin}" action="#{utilisateurSessionBean.loginClicked}" icon="ui-icon-check" style="margin:1"/>
+                    <p:commandButton value="#{msgs.btLoginAnonyme}" action="#{utilisateurSessionBean.loginAnonymeClicked}" immediate="true" icon="ui-icon-check"
+                                     style="margin:1"/>
+                    <p:commandButton value="#{msgs.btNouveauCompte}" action="/unsecured-pages/creationCompte.xhtml?faces-redirect=true" immediate="true"
+                                     icon="ui-icon-person" style="margin:1"/>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,90 @@
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h2>#{msgs.lbTitreListeBillets}</h2>
+        <h:form id="myform">
+            <p:growl id="growlMsgs" showDetail="true" sticky="true"/>
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    Billets pour un match || Billets de saison
+                </f:facet>
+                <ui:repeat var="billet" value="#{tousBilletsBean.listeBilletsUnMatch}">
+                    <p:panelGrid style="width: 300px;">
+                        <p:row>
+                            <p:column>#{msgs.lbBilletId}</p:column>
+                            <p:column>#{billet.billetId}</p:column>
+                            <p:column rowspan="6" rendered="#{utilisateurSessionBean.utilisateurActifPeutSupprimerBillet()}">
+                                <p:commandButton value="#{msgs.btEffacer}" action="#{suppressionBilletBean.supprimerBilletUnMatch(billet.billetId)}"
+                                                 update=":myform, :myform:growlMsgs" icon="ui-icon-close" style="margin:1"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>#{msgs.lbMatchId}</p:column>
+                            <p:column>#{billet.match_id}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>#{msgs.lbSection}</p:column>
+                            <p:column>#{billet.nomSection}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>#{msgs.lbCategorieSiege}</p:column>
+                            <p:column>#{billet.categorie_siege}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>#{msgs.lbPrix}</p:column>
+                            <p:column>
+                                <h:outputText value="#{billet.prix}">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br/>
+                    <br/>
+                </ui:repeat>
+
+                <ui:repeat var="billet" value="#{tousBilletsBean.listeBilletsSaison}">
+                    <p:panelGrid style="width: 300px;">
+                        <p:row>
+                            <p:column>#{msgs.lbBilletId}</p:column>
+                            <p:column>#{billet.billetId}</p:column>
+                            <p:column rowspan="6" rendered="#{utilisateurSessionBean.utilisateurActifPeutSupprimerBillet()}">
+                                <p:commandButton value="#{msgs.btEffacer}" action="#{suppressionBilletBean.supprimerBilletSaison(billet.billetId)}"
+                                                 update=":myform, :myform:growlMsgs" icon="ui-icon-close" style="margin:1"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>Saison :</p:column>
+                            <p:column>#{billet.annee}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>#{msgs.lbSection}</p:column>
+                            <p:column>#{billet.nomSection}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>#{msgs.lbCategorieSiege}</p:column>
+                            <p:column>#{billet.categorie_siege}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>#{msgs.lbPrix}</p:column>
+                            <p:column>
+                                <h:outputText value="#{billet.prix}">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <br/>
+                    <br/>
+                </ui:repeat>
+
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

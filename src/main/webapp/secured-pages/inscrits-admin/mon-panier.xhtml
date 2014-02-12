@@ -1,0 +1,130 @@
+<ui:composition
+        template="/templates/layout.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h2>Mon panier</h2>
+
+        <h:form id="myform">
+            <p:growl id="growlMsgs" showDetail="true" sticky="false"/>
+
+            <p:panel>
+                <p:commandButton value="Vider panier" action="#{panierBean.viderPanier()}" update=":myform, :myform:growlMsgs" icon="ui-icon-circle-close"
+                                 style="margin:1"/>
+                <p:commandButton value="Acheter tout" action="/secured-pages/inscrits-admin/paiement-panier.xhtml?faces-redirect=true" icon="ui-icon-check"
+                                 style="margin:1"/>
+                <br/>
+                <h:outputText value="Montant total du panier:"/>
+                <h:outputText value="#{panierBean.prixTotalDuPanier}">
+                    <f:convertNumber currencySymbol="$" type="currency"/>
+                </h:outputText>
+            </p:panel>
+
+            <br/>
+
+            <p:panel id="billetsUnMatchs">
+                <h2>Billets pour un match</h2>
+                <ui:repeat var="billetDTO" value="#{panierBean.listeBilletsUnMatch}">
+                    <p:panelGrid id="billetUnMatchsDescription" style="width: 300px;">
+                        <f:facet name="header">
+                            Billet-un-match
+                        </f:facet>
+                        <p:row>
+                            <p:column>Match ID:</p:column>
+                            <p:column>#{billetDTO.matchID}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>Section :</p:column>
+                            <p:column>#{billetDTO.nomSection}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>Cat. Siège:</p:column>
+                            <p:column>#{billetDTO.categorieSiege}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>Prix:</p:column>
+                            <p:column>
+                                <h:outputText value="#{billetDTO.prix}">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+
+                    <h:outputText value="Quantité désirée : #{billetDTO.nombreBilletsDesires}"/>
+                    <br/>
+                    <h:outputText value="Quantité Max disponible : #{billetDTO.nombreBilletsDisponibles}"/>
+                    <br/>
+                    <h:outputText value="Prix total :"/>
+                    <h:outputText value="#{billetDTO.prixTotal}">
+                        <f:convertNumber currencySymbol="$" type="currency"/>
+                    </h:outputText>
+                    <br/>
+                    <h:outputText value="Quantité:"/>
+                    <p:inputText value="#{billetDTO.nombreBilletsDesires}" size="6"/>
+
+                    <p:commandButton value="Rafraîchir" action="#{panierBean.changerQuantiteBilletUnMatch(billetDTO)}"
+                                     update=":myform, :myform:growlMsgs" icon="ui-icon-refresh" style="margin:1"/>
+                    <p:commandButton value="Retirer" action="#{panierBean.retirerBillet(billetDTO)}"
+                                     update=":myform, :myform:growlMsgs" icon="ui-icon-circle-close" style="margin:1"/>
+                    <br/><br/><br/>
+                </ui:repeat>
+            </p:panel>
+
+            <br/>
+            <br/>
+
+            <p:panel id="billetsSaison">
+                <h2>Billets saisonniers</h2>
+                <ui:repeat var="billetDTO" value="#{panierBean.listeBilletsSaison}">
+                    <p:panelGrid id="billetSaisonDescription" style="width: 300px;">
+                        <f:facet name="header">
+                            Billet-un-match
+                        </f:facet>
+                        <p:row>
+                            <p:column>Section:</p:column>
+                            <p:column>#{billetDTO.nomSection}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>Cat. Siège:</p:column>
+                            <p:column>#{billetDTO.categorieSiege}</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>Prix:</p:column>
+                            <p:column>
+                                <h:outputText value="#{billetDTO.prix}">
+                                    <f:convertNumber currencySymbol="$" type="currency"/>
+                                </h:outputText>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+
+                    <h:outputText value="Quantité désirée : #{billetDTO.nombreBilletsDesires}"/>
+                    <br/>
+                    <h:outputText value="Quantité Max disponible : #{billetDTO.nombreBilletsDisponibles}"/>
+                    <br/>
+                    <h:outputText value="Prix total :"/>
+                    <h:outputText value="#{billetDTO.prixTotal}">
+                        <f:convertNumber currencySymbol="$" type="currency"/>
+                    </h:outputText>
+                    <br/>
+                    <h:outputText value="Quantité:"/>
+                    <p:inputText value="#{billetDTO.nombreBilletsDesires}" size="6"/>
+
+                    <p:commandButton value="Rafraîchir" action="#{panierBean.changerQuantiteBilletSaison(billetDTO)}"
+                                     update=":myform, :myform:growlMsgs" icon="ui-icon-refresh" style="margin:1"/>
+                    <p:commandButton value="Retirer" action="#{panierBean.retirerBillet(billetDTO)}"
+                                     update=":myform, :myform:growlMsgs" icon="ui-icon-circle-close" style="margin:1"/>
+
+                    <br/><br/><br/>
+                </ui:repeat>
+            </p:panel>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

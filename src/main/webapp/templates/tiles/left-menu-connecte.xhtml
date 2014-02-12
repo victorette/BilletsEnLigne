@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui">
+
+<p:menu style="width:95%">
+    <p:menuitem value="Accueil" action="/secured-pages/accueil.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-home"/>
+    <p:menuitem value="Inventaire billets 1-match" action="/secured-pages/inventaire-1-match.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-script"/>
+    <p:menuitem value="Inventaire billets saison" action="/secured-pages/inventaire-saison.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-script"/>
+    
+    <p:menuitem value="Revendre billets 1-match" action="/secured-pages/inscrits-admin/reventeBillet-1-match.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-cart"
+                rendered="#{utilisateurSessionBean.utilisateurActifPeutAcheterBillet()}"/>
+    <p:menuitem value="Revendre billets saison" action="/secured-pages/inscrits-admin/reventeBillet-saison.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-cart"
+                rendered="#{utilisateurSessionBean.utilisateurActifPeutAcheterBillet()}"/>
+	<p:separator/>
+	<p:menuitem value="Mes billets en revente" action="/secured-pages/inscrits-admin/mes-billets-en-revente.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-cart"
+                rendered="#{utilisateurSessionBean.utilisateurActifPeutAcheterBillet()}"/>
+	<p:separator/>
+
+    <p:menuitem value="Tous utilisateurs" action="/secured-pages/tousUtilisateurs.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-person"/>
+    <p:menuitem value="Tous centres sportifs" action="/secured-pages/tousCentresSportifs.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-script"/>
+    <p:menuitem value="Tous matchs" action="/secured-pages/tousMatchs.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-script"/>
+    <p:menuitem value="Tous billets" action="/secured-pages/tousBillets.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-script"/>
+    <p:separator/>
+
+    <p:menuitem value="Créer centre sportif" action="/secured-pages/admin/creationCentreSportif.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-plusthick"
+                rendered="#{utilisateurSessionBean.utilisateurActifPeutCreerCentreSportif()}"/>
+    <p:menuitem value="Créer match" action="/secured-pages/admin/creationMatch.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-plusthick"
+                rendered="#{utilisateurSessionBean.utilisateurActifPeutCreerCentreMatch()}"/>
+    <p:menuitem value="Créer billet 1-match" action="/secured-pages/admin/creationBillet-1-match.xhtml?faces-redirect=true" ajax="false"
+                icon="ui-icon-plusthick"
+                rendered="#{utilisateurSessionBean.utilisateurActifPeutCreerBillet()}"/>
+    <p:menuitem value="Créer billet saison" action="/secured-pages/admin/creationBillet-saison.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-plusthick"
+                rendered="#{utilisateurSessionBean.utilisateurActifPeutCreerBillet()}"/>
+    <p:separator/>
+
+    <p:menuitem value="Mon panier" action="/secured-pages/inscrits-admin/mon-panier.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-cart"
+                rendered="#{utilisateurSessionBean.utilisateurActifPeutAcheterBillet()}"/>
+    <p:menuitem value="Mon compte" action="/secured-pages/inscrits-admin/modificationCompte.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-wrench"
+                rendered="#{utilisateurSessionBean.utilisateurActifPeutModifierInfosCompte()}"/>
+    <p:menuitem value="Logout" action="#{utilisateurSessionBean.logoutClicked}" icon="ui-icon-power"/>
+</p:menu>
+
+</html>

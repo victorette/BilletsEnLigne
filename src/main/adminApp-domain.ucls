@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="false">  
+  <interface id="1" language="java" name="ca.ulaval.ift6003.application.AdminApplication" project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/AdminApplication.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="531" y="43"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="2" language="java" name="ca.ulaval.ift6003.application.impl.AdminApplicationImpl" project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/impl/AdminApplicationImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="533" y="123"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="3" language="java" name="ca.ulaval.ift6003.domaine.modele.gestionIDs.GestionIDRepository" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/gestionIDs/GestionIDRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="889" y="289"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="4" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.BilletUnMatchRepository" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/BilletUnMatchRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="640" y="228"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="5" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.BilletSaisonRepository" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/BilletSaisonRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="536" y="303"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="6" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.MatchRepository" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/MatchRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="315" y="199"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="7" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.CentreSportifRepository" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/CentreSportifRepository.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="332" y="297"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="8" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.CentreSportifService" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/CentreSportifService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="287" y="123"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="9" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.BilletService" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/BilletService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="839" y="189"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="10" language="java" name="ca.ulaval.ift6003.domaine.modele.inventaire.MatchService" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/domaine/modele/inventaire/MatchService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="835" y="127"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="11" language="java" name="ca.ulaval.ift6003.application.impl.UtilisateurManagementImpl" 
+    project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/impl/UtilisateurManagementImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="902" y="36"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="12" language="java" name="ca.ulaval.ift6003.application.UtilisateurManagement" project="BilletsEnLigne" 
+    file="/BilletsEnLigne/src/main/java/ca/ulaval/ift6003/application/UtilisateurManagement.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="703" y="40"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <association id="13">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="14" name="matchRepository"/>      
+      <multiplicity id="15" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="16">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="17" name="billetUnMatchRepository"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="19">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="20" name="centreSportifRepository"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="22">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <association id="23">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="24" name="billetService"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="27" name="utilisateurManagement"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="30" name="centreSportifService"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="32">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="33">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="34" name="billetSaisonRepository"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="36">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="37" name="matchService"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false" static="false"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="false" multiplicity="false"/>
+</class-diagram>

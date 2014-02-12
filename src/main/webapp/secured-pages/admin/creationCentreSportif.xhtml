@@ -1,0 +1,38 @@
+<ui:composition
+        template="/templates/layout.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:form styleClass="comptePanelStyle" id="formCentreSportif">
+            <ui:param name="nomCentreSportif" value="#{creationCentreSportifBean.centreSportif}"/>
+
+            <p:growl id="growlMsgs" showDetail="true" sticky="false"/>
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    #{msgs.lbTitreCreationCentreSportif}
+                </f:facet>
+                <h:outputText value="#{msgs.lbNom}"/>
+                <p:inputText id="nom" value="#{nomCentreSportif.nom}" required="true" requiredMessage="#{msgs.msgNomCentreVide}">
+                    <f:validateLength minimum="1"/>
+                </p:inputText>
+                <h:outputText value="#{msgs.lbVille}"/>
+                <p:inputText id="ville" value="#{nomCentreSportif.ville}" required="true" requiredMessage="#{msgs.msgVileVide}">
+                    <f:validateLength minimum="1"/>
+                </p:inputText>
+                <h:outputText value="#{msgs.lbEntrezSections}"/>
+                <p:inputTextarea value="#{creationCentreSportifBean.sectionsString}" rows="10" cols="50"/>
+
+                <f:facet name="footer">
+                    <p:commandButton value="#{msgs.btAnnuler}" action="#{creationCentreSportifBean.annulerCreationCentreSportifClicked}" immediate="true"
+                                     icon="ui-icon-close" style="margin:1"/>
+                    <p:commandButton value="#{msgs.btConfirmer}" update="growlMsgs,formCentreSportif"
+                                     action="#{creationCentreSportifBean.creerCentreSportifClicked}" icon="ui-icon-check" style="margin:1"/>
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

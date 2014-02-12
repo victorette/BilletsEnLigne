@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#unsecured-pages#login.xhtml"
+  PATH="/unsecured-pages/login.xhtml" SHAPE="304,257,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#unsecured-pages#login.xhtml:0" NAME="item"
+   PATH="/unsecured-pages/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login-reussi::#secured-pages#accueil.xhtml"
+    NAME="output" PATH="/secured-pages/accueil.xhtml"
+    TARGET="rules:#secured-pages#accueil.xhtml" TITLE="login-reussi" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="login-anonyme-reussi::#secured-pages#accueil.xhtml"
+    NAME="output1" PATH="/secured-pages/accueil.xhtml"
+    TARGET="rules:#secured-pages#accueil.xhtml"
+    TITLE="login-anonyme-reussi" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login-echoue::#unsecured-pages#login.xhtml"
+    NAME="output3" PATH="/unsecured-pages/login.xhtml"
+    TARGET="rules:#unsecured-pages#login.xhtml" TITLE="login-echoue" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="goto-creation-compte::#unsecured-pages#creationCompte.xhtml"
+    NAME="output4" PATH="/unsecured-pages/creationCompte.xhtml"
+    TARGET="rules:#unsecured-pages#creationCompte.xhtml"
+    TITLE="goto-creation-compte" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#unsecured-pages#creationCompte.xhtml"
+  PATH="/unsecured-pages/creationCompte.xhtml" SHAPE="48,481,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#unsecured-pages#creationCompte.xhtml:0"
+   NAME="item" PATH="/unsecured-pages/creationCompte.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="creation-compte-reussie::#unsecured-pages#login.xhtml"
+    NAME="output" PATH="/unsecured-pages/login.xhtml"
+    TARGET="rules:#unsecured-pages#login.xhtml"
+    TITLE="creation-compte-reussie" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="creation-compte-echouee::#unsecured-pages#creationCompte.xhtml"
+    NAME="output1" PATH="/unsecured-pages/creationCompte.xhtml"
+    TARGET="rules:#unsecured-pages#creationCompte.xhtml"
+    TITLE="creation-compte-echouee" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="creation-compte-annulee::#unsecured-pages#login.xhtml"
+    NAME="output2" PATH="/unsecured-pages/login.xhtml"
+    TARGET="rules:#unsecured-pages#login.xhtml"
+    TITLE="creation-compte-annulee" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#secured-pages#inscrits-admin#modificationCompte.xhtml"
+  PATH="/secured-pages/inscrits-admin/modificationCompte.xhtml"
+  SHAPE="304,497,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#secured-pages#inscrits-admin#modificationCompte.xhtml:0"
+   NAME="item"
+   PATH="/secured-pages/inscrits-admin/modificationCompte.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="modification-compte-reussie::#secured-pages#inscrits-admin#modificationCompte.xhtml"
+    NAME="output"
+    PATH="/secured-pages/inscrits-admin/modificationCompte.xhtml"
+    TARGET="rules:#secured-pages#inscrits-admin#modificationCompte.xhtml"
+    TITLE="modification-compte-reussie" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="modification-compte-annulee::#secured-pages#accueil.xhtml"
+    NAME="output1" PATH="/secured-pages/accueil.xhtml"
+    TARGET="rules:#secured-pages#accueil.xhtml"
+    TITLE="modification-compte-annulee" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#secured-pages#admin#creationMatch.xhtml"
+  PATH="/secured-pages/admin/creationMatch.xhtml" SHAPE="32,769,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#secured-pages#admin#creationMatch.xhtml:0"
+   NAME="item" PATH="/secured-pages/admin/creationMatch.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="creation-match-annulee::#secured-pages#accueil.xhtml"
+    NAME="output" PATH="/secured-pages/accueil.xhtml"
+    TARGET="rules:#secured-pages#accueil.xhtml"
+    TITLE="creation-match-annulee" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#secured-pages#admin#creationCentreSportif.xhtml"
+  PATH="/secured-pages/admin/creationCentreSportif.xhtml"
+  SHAPE="32,881,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#secured-pages#admin#creationCentreSportif.xhtml:0"
+   NAME="item" PATH="/secured-pages/admin/creationCentreSportif.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="creation-nomCentreSportif-annulee::#secured-pages#accueil.xhtml"
+    NAME="output" PATH="/secured-pages/accueil.xhtml"
+    TARGET="rules:#secured-pages#accueil.xhtml"
+    TITLE="creation-nomCentreSportif-annulee" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="48,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logout-reussi::#unsecured-pages#login.xhtml"
+    NAME="output" PATH="/unsecured-pages/login.xhtml"
+    TARGET="rules:#unsecured-pages#login.xhtml" TITLE="logout-reussi" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#secured-pages#accueil.xhtml"
+  PATH="/secured-pages/accueil.xhtml" SHAPE="576,241,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#secured-pages#admin#creationBillet-saison.xhtml"
+  PATH="/secured-pages/admin/creationBillet-saison.xhtml"
+  SHAPE="304,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#secured-pages#admin#creationBillet-saison.xhtml:0"
+   NAME="item" PATH="/secured-pages/admin/creationBillet-saison.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="creation-billet-annulee::#secured-pages#accueil.xhtml"
+    NAME="output" PATH="/secured-pages/accueil.xhtml"
+    TARGET="rules:#secured-pages#accueil.xhtml"
+    TITLE="creation-billet-annulee" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#secured-pages#admin#creationBillet-1-match.xhtml"
+  PATH="/secured-pages/admin/creationBillet-1-match.xhtml"
+  SHAPE="304,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#secured-pages#admin#creationBillet-1-match.xhtml:0"
+   NAME="item" PATH="/secured-pages/admin/creationBillet-1-match.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="creation-billet-match-annulee::#secured-pages#accueil.xhtml"
+    NAME="output" PATH="/secured-pages/accueil.xhtml"
+    TARGET="rules:#secured-pages#accueil.xhtml"
+    TITLE="creation-billet-match-annulee" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

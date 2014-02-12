@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+  xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+  version="2.1">
+
+  <navigation-rule>
+    <display-name>login.xhtml</display-name>
+    <from-view-id>/unsecured-pages/login.xhtml</from-view-id>
+    <navigation-case>
+      <from-outcome>login-reussi</from-outcome>
+      <to-view-id>/secured-pages/accueil.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>login-anonyme-reussi</from-outcome>
+      <to-view-id>/secured-pages/accueil.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>login-echoue</from-outcome>
+      <to-view-id>/unsecured-pages/login.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>goto-creation-compte</from-outcome>
+      <to-view-id>/unsecured-pages/creationCompte.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <display-name>creationCompte.xhtml</display-name>
+    <from-view-id>/unsecured-pages/creationCompte.xhtml</from-view-id>
+    <navigation-case>
+      <from-outcome>creation-compte-reussie</from-outcome>
+      <to-view-id>/unsecured-pages/login.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>creation-compte-echouee</from-outcome>
+      <to-view-id>/unsecured-pages/creationCompte.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>creation-compte-annulee</from-outcome>
+      <to-view-id>/unsecured-pages/login.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+  </navigation-rule>
+
+ <navigation-rule>
+    <display-name>modificationCompte.xhtml</display-name>
+    <from-view-id>/secured-pages/inscrits-admin/modificationCompte.xhtml</from-view-id>
+    <navigation-case>
+      <from-outcome>modification-compte-reussie</from-outcome>
+      <to-view-id>/secured-pages/inscrits-admin/modificationCompte.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+     <navigation-case>
+         <from-outcome>modification-compte-echouee</from-outcome>
+         <to-view-id>/secured-pages/inscrits-admin/modificationCompte.xhtml</to-view-id>
+         <redirect />
+     </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+  	<display-name>creationBillet-saison.xhtml</display-name>
+  	<from-view-id>/secured-pages/admin/creationBillet-saison.xhtml</from-view-id>
+    <navigation-case>
+      <from-outcome>creation-billet-annulee</from-outcome>
+      <to-view-id>/secured-pages/accueil.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <display-name>creationBillet-1-match.xhtml</display-name>
+    <from-view-id>/secured-pages/admin/creationBillet-1-match.xhtml</from-view-id>
+    <navigation-case>
+      <from-outcome>creation-billet-match-annulee</from-outcome>
+      <to-view-id>/secured-pages/accueil.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+  	<display-name>creationMatch.xhtml</display-name>
+  	<from-view-id>/secured-pages/admin/creationMatch.xhtml</from-view-id>
+    <navigation-case>
+      <from-outcome>creation-match-annulee</from-outcome>
+      <to-view-id>/secured-pages/accueil.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+  	<display-name>creationCentreSportif.xhtml</display-name>
+  	<from-view-id>/secured-pages/admin/creationCentreSportif.xhtml</from-view-id>
+    <navigation-case>
+      <from-outcome>creation-nomCentreSportif-annulee</from-outcome>
+      <to-view-id>/secured-pages/accueil.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+  	<from-view-id>*</from-view-id>
+    <navigation-case>
+      <from-outcome>logout-reussi</from-outcome>
+      <to-view-id>/unsecured-pages/login.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+  </navigation-rule>
+
+  <application>
+    <resource-bundle>
+      <base-name>messages</base-name>
+      <var>msgs</var>
+    </resource-bundle>
+  </application>
+</faces-config>

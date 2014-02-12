@@ -1,0 +1,163 @@
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+
+        <h2>Inventaire de tous les matchs et billets à venir</h2>
+        <h:form id="myform">
+            <p:growl id="growlMsgs" showDetail="true" sticky="false"/>
+            <div id="mytable">
+                <ui:param name="inventaireTable" value="#{inventaireUnMatchBean.inventaireTable}"/>
+                <ui:param name="filtreOptions" value="#{inventaireUnMatchBean.filtreOptions}"/>
+
+                <p:dataTable id="dtoTable" var="dto" value="#{inventaireTable.inventaireDataModel}"
+                             widgetVar="DTOsFilter"
+                             paginator="true" rows="20"
+                             selection="#{inventaireTable.entreeChoisie}" selectionMode="single"
+                             sortMode="multiple"
+                             emptyMessage="Aucun item trouvé avec ces critères" filteredValue="#{inventaireTable.filteredDTOs}">
+
+                    <p:ajax event="rowSelect" listener="#{inventaireTable.onRowSelect}" update=":myform:sommaire_et_atchat_billet"/>
+                    <p:ajax event="rowUnselect" listener="#{inventaireTable.onRowUnselect}" update=":myform:sommaire_et_atchat_billet"/>
+
+
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Chercher tous les champs:"/>
+                            <p:inputText id="globalFilter" onkeyup="DTOsFilter.filter()" style="width:150px"/>
+                            <p:commandButton value="Afficher tous" id="btnClearFilters" onclick="DTOsFilter.clearFilters()"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column headerText="Sport" sortBy="#{dto.sportType}"
+                              filterBy="#{dto.sportType}" filterMatchMode="contains"
+                              filterOptions="#{filtreOptions.sportTypeOptions}">
+                        <h:outputText value="#{dto.sportType}"/>
+                    </p:column>
+                    <p:column headerText="Sexe" sortBy="#{dto.sportSexe}"
+                              filterBy="#{dto.sportSexe}" filterMatchMode="contains"
+                              filterOptions="#{filtreOptions.sportSexeOptions}">
+                        <h:outputText value="#{dto.sportSexe}"/>
+                    </p:column>
+                    <p:column headerText="MatchID" sortBy="#{dto.matchID}"
+                              filterBy="#{dto.matchID}" filterMatchMode="contains">
+                        <h:outputText value="#{dto.matchID}"/>
+                    </p:column>
+                    <p:column headerText="CentreSportif" sortBy="#{dto.nomCentreSportif}"
+                              filterBy="#{dto.nomCentreSportif}" filterMatchMode="contains">
+                        <h:outputText value="#{dto.nomCentreSportif}"/>
+                    </p:column>
+                    <p:column headerText="Ville" sortBy="#{dto.ville}"
+                              filterBy="#{dto.ville}" filterMatchMode="contains">
+                        <h:outputText value="#{dto.ville}"/>
+                    </p:column>
+                    <p:column headerText="Date" sortBy="#{dto.date}"
+                              filterBy="#{dto.date}" filterMatchMode="contains">
+                        <h:outputText value="#{dto.date}"/>
+                    </p:column>
+                    <p:column headerText="EquipeVisiteur" sortBy="#{dto.equipeVisiteur}"
+                              filterBy="#{dto.equipeVisiteur}" filterMatchMode="contains">
+                        <h:outputText value="#{dto.equipeVisiteur}"/>
+                    </p:column>
+                    <p:column headerText="Section" sortBy="#{dto.nomSection}"
+                              filterBy="#{dto.nomSection}" filterMatchMode="contains">
+                        <h:outputText value="#{dto.nomSection}"/>
+                    </p:column>
+                    <p:column headerText="Cat-Siege" sortBy="#{dto.categorieSiege}"
+                              filterBy="#{dto.categorieSiege}" filterMatchMode="contains"
+                              filterOptions="#{filtreOptions.categorieSiegeOptions}">
+                        <h:outputText value="#{dto.categorieSiege}"/>
+                    </p:column>
+                    <p:column headerText="Prix" sortBy="#{dto.prix}"
+                              filterBy="#{dto.prix}" filterMatchMode="contains">
+                        <h:outputText value="#{dto.prix}">
+                            <f:convertNumber currencySymbol="$" type="currency"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Nombre" sortBy="#{dto.nombreBilletsDisponibles}">
+                        <h:outputText value="#{dto.nombreBilletsDisponibles}"/>
+                    </p:column>
+                </p:dataTable>
+            </div>
+
+            <br/>
+            <br/>
+
+            <p:panel rendered="#{inventaireUnMatchBean.doitAfficherFiltreParPreferences()}">
+                <p:commandButton value="Appliquer Préférences billet" id="btnApplyPreferences"
+                                 action="#{inventaireUnMatchBean.toggleFiltre(true)}" update=":myform:dtoTable"/>
+                <p:commandButton value="Enlever Préférences billet" id="btnRemovePreferences"
+                                 action="#{inventaireUnMatchBean.toggleFiltre(false)}" update=":myform:dtoTable"/>
+            </p:panel>
+
+            <br/>
+            <br/>
+
+            <p:dataTable style="width:200px;" var="entry" value="#{inventaireUnMatchBean.nbBilletsParMatchs.entrySet().toArray()}">
+                <p:column headerText="Match">
+                    <h:outputText value="#{entry.key}"/>
+                </p:column>
+                <p:column headerText="Nombre billets">
+                    <h:outputText value="#{entry.value}"/>
+                </p:column>
+            </p:dataTable>
+
+            <br/>
+            <br/>
+
+            <p:panel id="sommaire_et_atchat_billet">
+                <ui:param name="dto" value="#{inventaireTable.entreeChoisie}"/>
+
+                <p:panelGrid columns="2" rendered="#{inventaireUnMatchBean.doitAfficherSommaireBillet()}">
+                    <f:facet name="header">
+                        Informations du billet selectioné
+                    </f:facet>
+                    <h:outputText value="MatchID:"/>
+                    <h:outputText value="#{dto.matchID}"/>
+                    <h:outputText value="Date/heure:"/>
+                    <h:outputText value="#{dto.date}"/>
+                    <h:outputText value="Opposants:"/>
+                    <h:outputText value="#{dto.equipeVisiteur}"/>
+                    <h:outputText value="Type d'admission:"/>
+                    <h:outputText value="#{dto.categorieSiege}"/>
+                    <h:outputText value="Section:"/>
+                    <h:outputText value="#{dto.nomSection}"/>
+                    <h:outputText value="Prix:"/>
+                    <h:outputText value="#{dto.prix}">
+                        <f:convertNumber currencySymbol="$" type="currency"/>
+                    </h:outputText>
+                    <f:facet name="footer">
+                        Achetez rapidement, plus que #{dto.nombreBilletsDisponibles} restant!
+                    </f:facet>
+                </p:panelGrid>
+                
+                <p:panel id="imageSection" rendered="#{inventaireUnMatchBean.doitAfficherImageStade()}">
+					<h:graphicImage library="stade-photos" name="#{inventaireUnMatchBean.imageSection}" alt="Image du stade non trouvée" 
+									width="380" height="290"/>                  
+                </p:panel>
+
+                <br/>
+
+                <p:panel id="achatBillet" rendered="#{inventaireUnMatchBean.doitAfficherAchatBillet()}">
+                    <h:outputText value="Quantité :" style="width:20px;"/>
+                    <p:inputText id="quantiteBillets" value="#{dto.nombreBilletsDesires}" required="true"
+                                 requiredMessage="Veuillez entrer une quantité !">
+                        <f:validateDoubleRange minimum="1"/>
+                    </p:inputText>
+                    <p:commandButton value="Ajouter au panier" id="btnAjouterPanier"
+                                     action="#{inventaireUnMatchBean.ajouterBilletAuPanier()}" update=":myform, :myform:growlMsgs"/>
+                    <p:commandButton value="Achat instantané" id="btnAchatInstantané" update=":myform, :myform:growlMsgs"
+                                     action="#{inventaireUnMatchBean.acheterInstantanement()}">
+                    </p:commandButton>
+                </p:panel>
+            </p:panel>
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>

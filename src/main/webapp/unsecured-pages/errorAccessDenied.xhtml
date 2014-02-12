@@ -1,0 +1,12 @@
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+        >
+
+	<ui:define name="content">
+		<h:outputText value="#{msgs.msgTitreAccesNonAuthorise}" styleClass="header"/>
+		<h:outputText value="#{msgs.msgAccesNonAuthorise}"/>
+		<h:messages/>
+	</ui:define>
+</ui:composition>

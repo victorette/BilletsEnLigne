@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app metadata-complete="true" xmlns="http://java.sun.com/xml/ns/javaee"
+         id="WebApp_ID" version="3.0">
+  <display-name>JavaServerFaces</display-name>
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Development</param-value>
+  </context-param>
+  <context-param>
+    <param-name>primefaces.THEME</param-name>
+    <param-value>aristo</param-value>
+  </context-param>
+  <context-param>
+    <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>server</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
+    <param-value>true</param-value>
+</context-param>
+
+  <context-param>
+    <param-name>org.apache.myfaces.SERIALIZE_STATE_IN_SESSION</param-name>
+    <param-value>false</param-value>
+	</context-param>
+
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    <param-value>resources.application</param-value>
+  </context-param>
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>ca.ulaval.ift6003.interfaces.filters.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/secured-pages/*</url-pattern>
+  </filter-mapping>
+
+    <filter>
+        <filter-name>ModificationCompteFilter</filter-name>
+        <filter-class>ca.ulaval.ift6003.interfaces.filters.ModificationCompteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ModificationCompteFilter</filter-name>
+        <url-pattern>/secured-pages/inscrits-admin/modificationCompte.xhtml</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>CreationEntiteFilter</filter-name>
+        <filter-class>ca.ulaval.ift6003.interfaces.filters.CreationEntiteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CreationEntiteFilter</filter-name>
+        <url-pattern>/secured-pages/admin/*</url-pattern>
+    </filter-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/unsecured-pages/login.xhtml</welcome-file>
+    </welcome-file-list>
+
+
+	<listener>
+	  <listener-class>
+	    com.sun.faces.config.ConfigureListener
+	  </listener-class>
+	</listener>
+
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+
+
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>My-Realm</realm-name>
+    <form-login-config>
+      <form-login-page>/unsecured-pages/login.xhtml</form-login-page>
+      <form-error-page>/unsecured-pages/login.xhtml</form-error-page>
+    </form-login-config>
+  </login-config>
+
+  <security-role>
+    <description>authorized user for application</description>
+    <role-name>AUTHORIZED_USER</role-name>
+  </security-role>
+
+  <error-page>
+    <error-code>403</error-code>
+    <location>/unsecured-pages/errorAccessDenied.xhtml</location>
+  </error-page>
+  <error-page>
+    <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    <location>/unsecured-pages/login.xhtml</location>
+  </error-page>
+
+  <listener>
+    <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+  </listener>
+
+  <resource-env-ref>
+    <resource-env-ref-name>BeanManager</resource-env-ref-name>
+    <resource-env-ref-type>javax.enterprise.inject.spi.BeanManager</resource-env-ref-type>
+  </resource-env-ref>
+</web-app>

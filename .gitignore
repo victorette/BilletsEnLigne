@@ -1,2 +1,4 @@
 target/*
 .svn
+safe-data/*
+.metadata
